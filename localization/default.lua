@@ -128,7 +128,72 @@ return {
             },
         },
         Joker = {
-
+            j_cspy_apophenia = {
+                name = 'Apophenia',
+                text = {
+                    "Played hands containing",
+                    "a {C:attention}Straight{} creates",
+                    "a {C:dark_edition}Negative {C:tarot}Conspiracy{} Card"
+                },
+            },
+            j_cspy_bigfool = {
+                name = 'Bigfool',
+                text = {
+                    "After each round,",
+                    "{C:green}#1# in #2#{} chance to",
+                    "make a held {C:tarot}Conspiracy",
+                    "Card {C:dark_edition}Negative"
+                },
+            },
+            j_cspy_cork_board = {
+                name = 'Cork Board',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult for every {C:purple}Conspiracy{}",
+                    "card held in hand"
+                },
+            },
+            j_cspy_grifter = {
+                name = 'Grifter',
+                text = {
+                    "{C:chips}+#1#{} Chips per {C:purple}Conspiracy{}",
+                    "card used this run",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive})",
+                },
+            },
+            j_cspy_hush_money = {
+                name = 'Hush Money',
+                text = {
+                    "Gives {C:money}$#1#{} at",
+                    "end of round,",
+                    "{C:red}-$#2#{} after every used",
+                    "or sold {C:tarot}Conspiracy{} Card"
+                },
+            },
+            j_cspy_illuminati = {
+                name = 'Illuminati',
+                text = {
+                    "Creates {C:attention}#1#{} {C:purple}Conspiracy{} Card",
+                    " at the end of each round",
+                    "{C:inactive, s:0.8}(Must have room)",
+                },
+            },
+            j_cspy_red_yarn = {
+                name = 'Red Yarn',
+                text = {
+                    "{C:mult}+#1#{} Chips per {C:purple}Conspiracy{}",
+                    "card used this run",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive})",
+                },
+            },
+            j_cspy_ufo = {
+                name = 'Unidentified Funny Object',
+                text = {
+                    "{X:mult,C:white}X#1#{} {C:green}probabilities{} of",
+                    "{C:purple}Conspiracy{} Cards working",
+                    "{C:green}#2# in #3#{} chance to be",
+                    "{C:red}destroyed{} after each round"
+                },
+            },
         },
         Other = {
             p_cspy_conspiracy_jumbo_1 = {
@@ -204,6 +269,7 @@ return {
             b_cspy_custom_menu = "Enable Custom Menu",
             k_cspy_artist = "Artist",
             k_conspiracy = "Conspiracy",
+            k_cspy_covered_up = "Covered Up",
             k_cspy_zodiac_pack = "Zodiac Pack",
         },
         v_text = {

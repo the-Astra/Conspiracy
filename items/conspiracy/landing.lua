@@ -8,7 +8,6 @@ SMODS.Consumable {
     },
     config = {
         extra = {
-            prob = 0,
             odds = 5,
             levels = 2
         }
@@ -27,7 +26,7 @@ SMODS.Consumable {
             end
         end
 
-        return { vars = { stg.prob + consp_count, stg.odds, stg.levels } }
+        return { vars = { consp_count * G.GAME.conspiracy_prob.normal, stg.odds, stg.levels } }
     end,
     use = function(self, card, area, copier)
         local stg = card.ability.extra
@@ -39,7 +38,7 @@ SMODS.Consumable {
             end
         end
 
-        if pseudorandom('landing') < consp_count / stg.odds then
+        if pseudorandom('landing') < (consp_count * G.GAME.conspiracy_prob.normal) / stg.odds then
             local level, lowest = nil, {}
 
             for k, v in pairs(G.GAME.hands) do
@@ -98,7 +97,7 @@ SMODS.Consumable {
                             play_sound('tarot2', 1, 0.4)
                             card:juice_up(0.3, 0.5)
                             if next(SMODS.find_mod('Maximus')) then
-                                SMODS.calculate_context({ failed_prob = true, odds = consp_count, card = card })
+                                SMODS.calculate_context({ failed_prob = true, odds = stg.odds - (consp_count * G.GAME.conspiracy_prob.normal), card = card })
                             end
                             return true
                         end

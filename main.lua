@@ -75,6 +75,10 @@ local igo = Game.init_game_object
 Game.init_game_object = function(self)
     local ret = igo(self)
 
+    ret.conspiracy_prob = {
+        normal = 1
+    }
+
     return ret
 end
 
@@ -196,18 +200,18 @@ sendDebugMessage("", 'Conspiracy')
 local ENABLED_JOKERS = { -- Comment out item to disable
 
     --Common
-    --'grifter',
-    --'red_yarn',
-    --'cork_board',
+    'grifter',
+    'red_yarn',
 
     --Uncommon
-    --'illuminati',
-    --'ufo',
-    --'bigfool',
+    'cork_board',
+    'illuminati',
+    'ufo',
+    'bigfool',
 
     --Rare
-    --'hush_money',
-    --'apophenia'
+    'hush_money',
+    'apophenia'
 
 }
 
