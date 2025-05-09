@@ -28,7 +28,7 @@ SMODS.Consumable {
             end
         end
 
-        return { vars = { stg.prob + consp_count, stg.odds } }
+        return { vars = { stg.prob + consp_count, stg.odds, stg.cards } }
     end,
     use = function(self, card, area, copier)
         local stg = card.ability.extra
@@ -42,11 +42,11 @@ SMODS.Consumable {
 
         if pseudorandom('5g') < consp_count / stg.odds then
             for k, v in pairs(G.hand.highlighted) do
+                v:set_edition({ foil = true })
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 0.2,
                     func = function()
-                        v:set_edition({foil = true})
                         card:juice_up()
                         return true;
                     end

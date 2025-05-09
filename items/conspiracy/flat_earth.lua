@@ -94,6 +94,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         local stg = card.ability.extra
         
+        return true
     end,
     set_badges = function(self, card, badges)
         if self.discovered then

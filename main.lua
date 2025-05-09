@@ -130,7 +130,7 @@ SMODS.ConsumableType {
     secondary_colour = G.C.SECONDARY_SET.Tarot,
     default = 'c_cspy_sighting',
     collection_rows = { 7, 7 },
-    shop_rate = 0.0
+    shop_rate = 0.6
 }
 
 local ENABLED_CONSPIRACIES = {
@@ -140,12 +140,12 @@ local ENABLED_CONSPIRACIES = {
     'hoax',
     'pyramid',
     'vaccine',
-    --'society',
+    'society',
     'corruption',
     'woke',
     'mib',
     'flat_earth',
-    --'landing',
+    'landing',
     '5g',
     'tinfoil',
     'conspiracy_dummy',

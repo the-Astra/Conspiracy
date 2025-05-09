@@ -93,6 +93,15 @@ return {
                     'for current round',
                 }
             },
+            c_cspy_society = {
+                name = 'Secret Society',
+                text = {
+                    '{C:green}#1# in #2#{} chance to',
+                    'add a {C:green}random {C:dark_edition}edition{} to',
+                    'a {C:green}random{} Joker for every',
+                    '{C:clubs}Club{} held in hand'
+                }
+            },
             c_cspy_tinfoil = {
                 name = 'Tinfoil Fail',
                 text = {

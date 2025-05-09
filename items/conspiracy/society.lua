@@ -39,7 +39,35 @@ SMODS.Consumable {
         end
 
         if pseudorandom('society') < consp_count / stg.odds then
+            for k, v in pairs(G.hand.cards) do
+                if v:is_suit("Clubs") then
+                    local eligible_jokers = {}
+                    for kk, vv in pairs(G.jokers.cards) do
+                        if not vv.edition or vv.marked_for_edition then
+                            eligible_jokers[#eligible_jokers + 1] = vv
+                        end
+                    end
 
+                    if next(eligible_jokers) then
+                        local chosen_joker = pseudorandom_element(eligible_jokers, pseudoseed('society'))
+                        chosen_joker.marked_for_edition = true
+                        local _edition = poll_edition('society', nil, nil, true)
+
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.3,
+                            func = function()
+                                chosen_joker.marked_for_edition = nil
+
+                                chosen_joker:set_edition(_edition, true)
+                                card:juice_up()
+                                return true;
+                            end
+                        }))
+                    end
+                end
+            end
+            delay(0.5)
         else
             G.E_MANAGER:add_event(Event({
                 func = function()
@@ -54,7 +82,7 @@ SMODS.Consumable {
                                 major = card,
                                 backdrop_colour = G.C.SECONDARY_SET.Tarot,
                                 align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
-                                'tm' or 'cm',
+                                    'tm' or 'cm',
                                 offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
                                 silent = true
                             })
@@ -82,7 +110,8 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         local stg = card.ability.extra
-        
+
+        return #G.hand.cards > 0
     end,
     set_badges = function(self, card, badges)
         if self.discovered then

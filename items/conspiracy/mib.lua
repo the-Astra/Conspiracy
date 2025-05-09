@@ -27,7 +27,7 @@ SMODS.Consumable {
             end
         end
 
-        return { vars = { stg.prob + consp_count, stg.odds } }
+        return { vars = { stg.prob + consp_count, stg.odds, stg.cards } }
     end,
     use = function(self, card, area, copier)
         local stg = card.ability.extra
