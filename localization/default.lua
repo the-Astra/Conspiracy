@@ -21,7 +21,7 @@ return {
             c_cspy_conspiracy_dummy = {
                 name = 'Conspiracy Card',
                 text = {
-                    'Odds {C:attention}increase{} by {C:green}1{}',
+                    'Probability {C:attention}increases{} by {C:green}1{}',
                     'for every other',
                     'Conspiracy Card held'
                 }
@@ -165,7 +165,7 @@ return {
                 text = {
                     "Gives {C:money}$#1#{} at",
                     "end of round,",
-                    "{C:red}-$#2#{} after every used",
+                    "{C:red}-$#2#{} for every used",
                     "or sold {C:tarot}Conspiracy{} Card"
                 },
             },
@@ -173,7 +173,7 @@ return {
                 name = 'Illuminati',
                 text = {
                     "Creates {C:attention}#1#{} {C:purple}Conspiracy{} Card",
-                    " at the end of each round",
+                    "at the end of each round",
                     "{C:inactive, s:0.8}(Must have room)",
                 },
             },
@@ -197,7 +197,7 @@ return {
         },
         Other = {
             p_cspy_conspiracy_jumbo_1 = {
-                name = 'Jumbo Zodiac Pack',
+                name = 'Jumbo Classified Pack',
                 text = {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2#{C:Tarot} Conspiracy{} cards to",
@@ -205,26 +205,26 @@ return {
                 },
             },
             p_cspy_conspiracy_mega_1 = {
-                name = 'Mega Zodiac Pack',
+                name = 'Mega Classified Pack',
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:Tarot} Horoscope{} cards to",
+                    "{C:attention}#2#{C:Tarot} Conspiracy{} cards to",
                     "be used immediately",
                 },
             },
             p_cspy_conspiracy_normal_1 = {
-                name = 'Mega Zodiac Pack',
+                name = 'Classified Pack',
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:Tarot} Horoscope{} cards to",
+                    "{C:attention}#2#{C:Tarot} Conspiracy{} cards to",
                     "be used immediately",
                 },
             },
             p_cspy_conspiracy_normal_2 = {
-                name = 'Mega Zodiac Pack',
+                name = 'Classified Pack',
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:Tarot} Horoscope{} cards to",
+                    "{C:attention}#2#{C:Tarot} Conspiracy{} cards to",
                     "be used immediately",
                 },
             },
@@ -270,7 +270,7 @@ return {
             k_cspy_artist = "Artist",
             k_conspiracy = "Conspiracy",
             k_cspy_covered_up = "Covered Up",
-            k_cspy_zodiac_pack = "Zodiac Pack",
+            k_cspy_classified_pack = "Classified Pack",
         },
         v_text = {
 

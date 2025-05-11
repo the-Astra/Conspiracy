@@ -134,7 +134,7 @@ SMODS.ConsumableType {
     secondary_colour = G.C.SECONDARY_SET.Tarot,
     default = 'c_cspy_sighting',
     collection_rows = { 7, 7 },
-    shop_rate = 0.6
+    shop_rate = 1
 }
 
 local ENABLED_CONSPIRACIES = {
@@ -173,7 +173,10 @@ sendDebugMessage("", 'Conspiracy')
 } ]]
 
 local ENABLED_BOOSTERS = {
-
+    --'classified_jumbo_1',
+    --'classified_mega_1',
+    --'classified_normal_1',
+    --'classified_normal_2',
 }
 
 sendDebugMessage("Loading Boosters...", 'Conspiracy')
