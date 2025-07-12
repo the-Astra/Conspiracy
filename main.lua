@@ -71,17 +71,6 @@ SMODS.Atlas { -- Placeholder Atlas
 
 --#region Function Hooks ------------------------------------------------------------------------------------
 
-local igo = Game.init_game_object
-Game.init_game_object = function(self)
-    local ret = igo(self)
-
-    ret.conspiracy_prob = {
-        normal = 1
-    }
-
-    return ret
-end
-
 --[[ -- Menu stuff
 if Conspiracy_config.menu then
     local oldfunc = Game.main_menu

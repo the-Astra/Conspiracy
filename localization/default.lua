@@ -21,7 +21,7 @@ return {
             c_cspy_conspiracy_dummy = {
                 name = 'Conspiracy Card',
                 text = {
-                    'Probability {C:attention}increases{} by {C:green}1{}',
+                    'Probability {C:attention}increases{} by {C:green}#1#{}',
                     'for every other',
                     'Conspiracy Card held'
                 }
@@ -188,7 +188,7 @@ return {
             j_cspy_ufo = {
                 name = 'Unidentified Funny Object',
                 text = {
-                    "{X:mult,C:white}X#1#{} {C:green}probabilities{} of",
+                    "{X:green,C:white}X#1#{} {C:green}probabilities{} of",
                     "{C:purple}Conspiracy{} Cards working",
                     "{C:green}#2# in #3#{} chance to be",
                     "{C:red}destroyed{} after each round"

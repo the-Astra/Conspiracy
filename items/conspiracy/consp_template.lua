@@ -26,7 +26,7 @@ SMODS.Consumable {
             end
         end
 
-        return { vars = { consp_count * G.GAME.conspiracy_prob.normal, stg.odds } }
+        return { vars = { SMODS.get_probability_vars(card, consp_count, stg.odds, '') } }
     end,
     use = function(self, card, area, copier)
         local stg = card.ability.extra
@@ -38,7 +38,7 @@ SMODS.Consumable {
             end
         end
 
-        if pseudorandom('') < (consp_count * G.GAME.conspiracy_prob.normal) / stg.odds then
+        if SMODS.pseudorandom_probability(card, '', consp_count, stg.odds) then
 
         else
             G.E_MANAGER:add_event(Event({
@@ -69,9 +69,6 @@ SMODS.Consumable {
                             }))
                             play_sound('tarot2', 1, 0.4)
                             card:juice_up(0.3, 0.5)
-                            if next(SMODS.find_mod('Maximus')) then
-                                SMODS.calculate_context({ failed_prob = true, odds = stg.odds - (consp_count * G.GAME.conspiracy_prob.normal), card = card })
-                            end
                             return true
                         end
                     }))

@@ -18,14 +18,20 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         local stg = card.ability.extra
         return {
-            vars = { stg.multiplier, stg.prob * G.GAME.probabilities.normal, stg.odds }
+            vars = { stg.multiplier, SMODS.get_probability_vars(card, stg.prob, stg.odds, 'ufo') }
         }
     end,
     calculate = function(self, card, context)
         local stg = card.ability.extra
 
+        if context.mod_probability and context.trigger_obj.ability.set == 'Conspiracy' then
+            return {
+                numerator = context.numerator * stg.multiplier
+            }
+        end
+
         if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
-            if pseudorandom('ufo') < (stg.prob * G.GAME.probabilities.normal) / stg.odds then
+            if SMODS.pseudorandom_probability(card, 'ufo', stg.prob, stg.odds) then
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         card:start_dissolve()
@@ -33,12 +39,7 @@ SMODS.Joker {
                     end
                 }))
                 return {
-                    message = localize('k_cspy_covered_up'),
-                    func = function()
-                        if next(SMODS.find_mod('Maximus')) then
-                            SMODS.calculate_context({ failed_prob = true, odds = stg.odds - (stg.prob * G.GAME.probabilities.normal), card = card })
-                        end
-                    end
+                    message = localize('k_cspy_covered_up')
                 }
             else
                 return {
@@ -46,16 +47,6 @@ SMODS.Joker {
                 }
             end
         end
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        local stg = card.ability.extra
-
-        G.GAME.conspiracy_prob.normal = G.GAME.conspiracy_prob.normal * stg.multiplier
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-        local stg = card.ability.extra
-
-        G.GAME.conspiracy_prob.normal = G.GAME.conspiracy_prob.normal / stg.multiplier
     end,
     set_badges = function(self, card, badges)
         if self.discovered then

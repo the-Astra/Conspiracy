@@ -17,14 +17,14 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         local stg = card.ability.extra
         return {
-            vars = { stg.prob * G.GAME.probabilities.normal, stg.odds }
+            vars = { SMODS.get_probability_vars(card, stg.prob, stg.odds, 'bigfool') }
         }
     end,
     calculate = function(self, card, context)
         local stg = card.ability.extra
 
         if context.end_of_round and not context.individual and not context.repetition then
-            if pseudorandom('bigfool') < (stg.prob * G.GAME.probabilities.normal) / stg.odds then
+            if SMODS.pseudorandom_probability(card, 'bigfool', stg.prob, stg.odds) then
                 local conspiracies = {}
                 for k, v in pairs(G.consumeables.cards) do
                     if v.ability.set == 'Conspiracy' and not v.edition and not v.marked_by_bigfool then
@@ -43,10 +43,6 @@ SMODS.Joker {
                             return true;
                         end
                     }))
-                end
-            else
-                if next(SMODS.find_mod('Maximus')) then
-                    SMODS.calculate_context({ failed_prob = true, odds = stg.odds - (stg.prob * G.GAME.probabilities.normal), card = card })
                 end
             end
         end

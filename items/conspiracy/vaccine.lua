@@ -28,7 +28,7 @@ SMODS.Consumable {
             end
         end
 
-        return { vars = { consp_count * G.GAME.conspiracy_prob.normal, stg.odds, stg.cards } }
+        return { vars = { SMODS.get_probability_vars(card, consp_count, stg.odds, 'vaccine'), stg.cards } }
     end,
     use = function(self, card, area, copier)
         local stg = card.ability.extra
@@ -40,7 +40,7 @@ SMODS.Consumable {
             end
         end
 
-        if pseudorandom('vaccine') < (consp_count * G.GAME.conspiracy_prob.normal) / stg.odds then
+        if SMODS.pseudorandom_probability(card, 'vaccine', consp_count, stg.odds) then
             local i = 1
             for k, v in pairs(G.hand.cards) do
                 if v:is_suit("Hearts") then
@@ -118,9 +118,6 @@ SMODS.Consumable {
                             }))
                             play_sound('tarot2', 1, 0.4)
                             card:juice_up(0.3, 0.5)
-                            if next(SMODS.find_mod('Maximus')) then
-                                SMODS.calculate_context({ failed_prob = true, odds = stg.odds - (consp_count * G.GAME.conspiracy_prob.normal), card = card })
-                            end
                             return true
                         end
                     }))
