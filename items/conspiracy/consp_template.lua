@@ -13,6 +13,7 @@ SMODS.Consumable {
         }
     },
     cost = 4,
+    pixel_size = {w = 69, h = 73},
     loc_vars = function(self, info_queue, card)
         local stg = card.ability.extra
         info_queue[#info_queue + 1] = G.P_CENTERS['c_cspy_conspiracy_dummy']

@@ -1,10 +1,10 @@
 SMODS.Consumable {
     key = 'assassination',
     set = 'Conspiracy',
-    atlas = 'Placeholder',
+    atlas = 'Conspiracy',
     pos = {
-        x = 1,
-        y = 2
+        x = 0,
+        y = 0
     },
     config = {
         extra = {
@@ -13,6 +13,7 @@ SMODS.Consumable {
         }
     },
     cost = 4,
+    pixel_size = {w = 69, h = 73},
     loc_vars = function(self, info_queue, card)
         local stg = card.ability.extra
         info_queue[#info_queue + 1] = G.P_CENTERS['c_cspy_conspiracy_dummy']
@@ -110,7 +111,7 @@ SMODS.Consumable {
     end,
     set_badges = function(self, card, badges)
         if self.discovered then
-            badges[#badges + 1] = create_badge(localize('k_cspy_artist') .. ': anerdymous', G.C.BLACK, G.C.WHITE, 1)
+            badges[#badges + 1] = create_badge(localize('k_cspy_artist') .. ': SadCube', Conspiracy.C.SECONDARY_SET.Conspiracy, Conspiracy.C.SET.Conspiracy, 1)
         end
     end
 }

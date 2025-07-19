@@ -43,7 +43,7 @@ SMODS.current_mod.optional_features = { retrigger_joker = true, post_trigger = t
 
 --#endregion
 
---#region Talisman compat
+--#region Talisman compat -----------------------------------------------------------------------------------
 
 to_big = to_big or function(num)
     return num
@@ -51,7 +51,21 @@ end
 
 --#endregion
 
---#region Misc Atlases -------------------------------------------------------------------------------------------
+--#region Colors --------------------------------------------------------------------------------------------
+
+Conspiracy.C = {
+    CONSPIRACY = HEX('7d8c8f'),
+    SET = {
+        Conspiracy = HEX('fbf5ee')
+    },
+    SECONDARY_SET = {
+        Conspiracy = HEX('7d8c8f')
+    }
+}
+
+--#endregion
+
+--#region Atlases -------------------------------------------------------------------------------------------
 
 SMODS.Atlas { -- Placeholder Atlas
     key = 'Placeholder',
@@ -107,20 +121,27 @@ end ]]
 
 --#endregion
 
---#region Achievements
+--#region Achievements --------------------------------------------------------------------------------------
 
 --[[ assert(SMODS.load_file('items/achievements.lua'))()
 sendDebugMessage("Loaded Achievements", 'Conspiracy') ]]
 
 --#endregion
 
---#region Conspiracy -----------------------------------------------------------------------------------------
+--#region Conspiracy ----------------------------------------------------------------------------------------
+
+SMODS.Atlas { -- Main Conspiracy Atlas
+    key = 'Conspiracy',
+    path = "Conspiracy.png",
+    px = 71,
+    py = 95
+}
 
 -- Conspiracy Type
 SMODS.ConsumableType {
     key = 'Conspiracy',
-    primary_colour = G.C.SET.Tarot,
-    secondary_colour = G.C.SECONDARY_SET.Tarot,
+    primary_colour = Conspiracy.C.SET.Conspiracy,
+    secondary_colour = Conspiracy.C.SECONDARY_SET.Conspiracy,
     default = 'c_cspy_sighting',
     collection_rows = { 7, 7 },
     shop_rate = 1
@@ -152,7 +173,7 @@ end
 sendDebugMessage("", 'Conspiracy')
 --#endregion
 
---#region Boosters
+--#region Boosters ------------------------------------------------------------------------------------------
 
 --[[ SMODS.Atlas { -- Main Booster Atlas
     key = 'Boosters',
