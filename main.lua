@@ -121,6 +121,22 @@ end ]]
 
 --#endregion
 
+--#region Functions -----------------------------------------------------------------------------------------
+
+Conspiracy.count_conspiracy_cards = function()
+    local count = 0
+    if G.consumeables then
+        for k, v in pairs(G.consumeables.cards) do
+            if v.ability.set == 'Conspiracy' then
+                count = count + 1
+            end
+        end
+    end
+    return count
+end
+
+--#endregion
+
 --#region Achievements --------------------------------------------------------------------------------------
 
 --[[ assert(SMODS.load_file('items/achievements.lua'))()

@@ -18,26 +18,14 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS['c_cspy_conspiracy_dummy']
         info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
 
-        local consp_count = 0
-        if G.consumeables then
-            for k, v in pairs(G.consumeables.cards) do
-                if v.ability.set == 'Conspiracy' then
-                    consp_count = consp_count + 1
-                end
-            end
-        end
+        local consp_count = Conspiracy.count_conspiracy_cards()
 
         return { vars = { SMODS.get_probability_vars(card, consp_count, stg.odds, '5g'), stg.cards } }
     end,
     use = function(self, card, area, copier)
         local stg = card.ability.extra
 
-        local consp_count = 1
-        for k, v in pairs(G.consumeables.cards) do
-            if v.ability.set == 'Conspiracy' then
-                consp_count = consp_count + 1
-            end
-        end
+        local consp_count = Conspiracy.count_conspiracy_cards() + 1
 
         if SMODS.pseudorandom_probability(card, '5g', consp_count, stg.odds) then
             for k, v in pairs(G.hand.highlighted) do
